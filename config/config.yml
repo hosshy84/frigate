@@ -1,0 +1,56 @@
+mqtt:
+  enabled: false
+
+detectors:
+  cpu1:
+    type: cpu
+    num_threads: 3
+
+model:
+  width: 320
+  height: 320
+
+cameras:
+  camera_19:
+    ffmpeg:
+      inputs:
+        - path: rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@{FRIGATE_CAMERA1_IP}:8554/stream
+          roles:
+            - detect
+            - record
+    detect:
+      enabled: true
+      width: 1280
+      height: 720
+      fps: 5
+
+  camera_18:
+    ffmpeg:
+      inputs:
+        - path: rtsp://{FRIGATE_RTSP_USER}:{FRIGATE_RTSP_PASSWORD}@{FRIGATE_CAMERA2_IP}:8554/stream
+          roles:
+            - detect
+            - record
+    detect:
+      enabled: true
+      width: 1280
+      height: 720
+      fps: 5
+
+record:
+  enabled: true
+  continuous:
+    days: 1
+
+snapshots:
+  enabled: true
+  retain:
+    default: 1
+
+objects:
+  track:
+    - person
+    - car
+    - cat
+    - dog
+version: 0.17-0
