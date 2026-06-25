@@ -1,13 +1,4 @@
 .env
 storage/
-config/*.db
-config/*.db-shm
-config/*.db-wal
-config/backup.db
-config/backup_config.yaml
-config/.exports
-config/.jwt_secret
-config/.search_stats.json
-config/.timeline
-config/.vacuum
-config/go2rtc_homekit.yml
+config/*
+!config/config.yml
